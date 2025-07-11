@@ -95,6 +95,35 @@
   }
 
 
+  /* Hamburger Menu Dark Mode */
+.topCenter.dark.showMenu {
+  background-color: #121212;
+}
+
+.topList.dark {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+.topList.dark .topListItem a,
+.topList.dark .topListItem {
+  color: #f0f0f0;
+}
+
+.topList.dark .topListItem:hover {
+  color: #2ca8f5;
+}
+
+/* Smooth transition */
+.topCenter,
+.topList,
+.topListItem {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+
+
 @media screen and (max-width: 768px) {
   .topleft{
     display: none;
@@ -119,4 +148,23 @@
     flex-direction: column;
     gap: 10px;
   }
+}
+
+
+
+/* Dark Mode */
+.top.dark {
+  background-color: #1c1c1c;
+  color: #f0f0f0;
+}
+
+.top.dark .topListItem a,
+.top.dark .topListItem,
+.top.dark .topIcon,
+.top.dark .topSearchIcon {
+  color: #f0f0f0;
+}
+
+.top.dark .topImg {
+  border: 1px solid #666;
 }

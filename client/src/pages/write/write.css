@@ -5,7 +5,7 @@
 .writeImg {
   margin-left: 150px;
   width: 70vw;
-  height: 250px;
+  height: 400px; /*250px */
   border-radius: 10px;
   object-fit: cover;
 }
@@ -99,4 +99,40 @@
     top: 10px;
     font-size: 0.9rem;
   }
+}
+
+
+/* Dark Mode Styles for Inputs */
+.write.dark .writeInput,
+.write.dark .writeText {
+  background-color: #1c1c1c;
+  color: #f0f0f0;
+  border: 1px solid #555;
+}
+
+.write.dark .writeInput::placeholder,
+.write.dark .writeText::placeholder {
+  color: #aaa;
+}
+
+.write.dark .writeSubmit {
+  background-color: #444;
+  color: white;
+  border: 1px solid #666;
+}
+
+.write.dark .writeSubmit:hover {
+  background-color: #666;
+}
+
+.writeInput.dark,
+.writeText.dark {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #444;
+}
+
+.writeInput.dark::placeholder,
+.writeText.dark::placeholder {
+  color: #aaa;
 }

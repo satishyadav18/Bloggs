@@ -9,7 +9,7 @@ export default function Header() {
       </div>
       <img
         className="headerImg"
-        src="https://images.pexels.com/photos/1167355/pexels-photo-1167355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        src="https://cdn.stocksnap.io/img-thumbs/280h/spring-flower_6UQXFWM8DQ.jpg"
         alt=""
       />
     </div>

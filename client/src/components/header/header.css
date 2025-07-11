@@ -17,7 +17,7 @@ body, html, #root {
   flex-direction: column;
   align-items: center;
   font-family: "Lora", serif;
-  color: #444;
+  /* color: #f3f2f2; */
 }
 
 .headerTitleSm {
@@ -46,4 +46,10 @@ body, html, #root {
   object-fit: cover;
   margin-top: 5%;
   max-height: 450px;
+}
+
+
+/* ✅ Dark mode styles */
+.header.dark .headerTitles {
+  color: #fff;
 }

@@ -3,7 +3,7 @@
   height: fit-content;
   margin: 20px;
   padding-bottom: 30px;
-  background-color: #fdfbfb;
+  /* background-color: #fdfbfb; */
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@
   font-family: "Varela Round", sans-serif;
   font-size: 12px;
   line-height: 19px;
-  color: #222222;
+  /* color: #222222; */
   font-weight: 600;
 }
 
@@ -50,6 +50,10 @@
   width: 50%;
   margin-top: 15px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
 }
 
 .sidebarSocial {
@@ -69,5 +73,31 @@
 .sidebarIcon {
   font-size: 16px;
   margin-left: 10px;
-  color: #333;
+  color: #acacac;
+}
+
+
+.sidebar.dark {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #444;
+}
+
+.sidebar.dark .sidebarTitle {
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+  color: #f0f0f0;
+}
+
+.sidebar.dark .sidebarListItem a,
+.sidebar.dark .sidebarListItem {
+  color: #ccc;
+}
+
+.sidebar.dark .sidebarListItem:hover {
+  color: #00bcd4;
+}
+
+.sidebar.dark .sidebarSocial .sidebarIcon {
+  color: #ccc;
 }
