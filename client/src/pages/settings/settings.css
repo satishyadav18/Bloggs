@@ -85,6 +85,24 @@
   background-color: rgb(1, 114, 114);
 }
 
+.passwordWrapper {
+  display: flex;
+  align-items: center;
+
+}
+
+.passwordInput {
+  flex: 1;
+  height: 30px;
+  margin-top: 10px;
+  border: none;
+  border-bottom: 1px solid lightgray;
+}
+
+.togglePasswordIcon {
+  cursor: pointer;
+  margin-left: 10px;
+}
 
 
 @media screen and (max-width: 768px) {

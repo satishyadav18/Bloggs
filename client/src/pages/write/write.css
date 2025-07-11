@@ -1,13 +1,16 @@
+
 .write {
   padding-top: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .writeImg {
-  margin-left: 150px;
-  width: 70vw;
+  /* width: 75vw; */
   height: 400px; /*250px */
   border-radius: 10px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .writeForm {
@@ -15,9 +18,12 @@
 }
 
 .writeFormGroup {
-  margin-left: 150px;
+  /* margin-left: 150px; */
   display: flex;
   align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .writeIcon {
@@ -26,7 +32,7 @@
   font-size: 20px;
   border: 1px solid;
   border-radius: 50%;
-  color: rgb(129, 125, 125);
+  /* color: rgb(129, 125, 125); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,7 +47,7 @@
 }
 
 .writeInput::placeholder {
-  color: rgb(189, 185, 185);
+  /* color: rgb(189, 185, 185); */
   font-weight: 400;
 }
 
@@ -51,16 +57,16 @@
 
 .writeText {
   width: 70vw;
-  height: 100vh;
+  height: 70vh;
   font-family: inherit;
   font-size: 20px;
 }
 
 .writeSubmit {
   position: absolute;
-  top: 20px;
-  right: 50px;
-  color: white;
+  bottom: 20px;
+  right: 2px;
+  /* color: white; */
   background-color: teal;
   padding: 10px;
   border: none;
@@ -102,37 +108,26 @@
 }
 
 
-/* Dark Mode Styles for Inputs */
-.write.dark .writeInput,
-.write.dark .writeText {
-  background-color: #1c1c1c;
-  color: #f0f0f0;
-  border: 1px solid #555;
-}
 
-.write.dark .writeInput::placeholder,
-.write.dark .writeText::placeholder {
-  color: #aaa;
-}
 
-.write.dark .writeSubmit {
-  background-color: #444;
-  color: white;
-  border: 1px solid #666;
-}
 
-.write.dark .writeSubmit:hover {
-  background-color: #666;
-}
-
+/* Dark mode */
 .writeInput.dark,
 .writeText.dark {
-  background-color: #1e1e1e;
-  color: #f0f0f0;
+  background-color: #222;
+  color: #f1f1f1;
   border: 1px solid #444;
 }
 
+.writeInput,
+.writeText {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* Optional: style the placeholder text in dark mode */
 .writeInput.dark::placeholder,
 .writeText.dark::placeholder {
   color: #aaa;
 }
+

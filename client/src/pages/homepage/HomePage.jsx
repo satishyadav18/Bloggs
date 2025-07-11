@@ -57,11 +57,9 @@ export default function Homepage({ darkMode }) {
 
   return (
     <>
-      {/* ✅ Pass darkMode prop to Header */}
       <Header darkMode={darkMode} />
       <div className={`home ${darkMode ? "dark" : ""}`}>
         <Posts posts={posts} />
-        {/* ✅ Pass darkMode to Sidebar too */}
         <Sidebar darkMode={darkMode} />
       </div>
     </>

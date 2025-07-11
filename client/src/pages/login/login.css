@@ -58,3 +58,22 @@
   color: white;
   border-radius: 10px;
 }
+
+
+.passwordField {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordField input {
+  flex: 1;
+}
+
+.passwordField i {
+  position: absolute;
+  right: 10px;
+}
+.passwordField i:hover {
+  cursor: pointer;
+}

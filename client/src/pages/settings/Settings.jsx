@@ -9,10 +9,12 @@ export default function Settings() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
   const [success, setSuccess] = useState(false);
 
   const { user, dispatch } = useContext(Context);
-  const PF = "http://localhost:5000/images/"
+  const PF = "http://localhost:5000/images/";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,15 +30,20 @@ export default function Settings() {
       const filename = Date.now() + file.name;
       data.append("name", filename);
       data.append("file", file);
-      updatedUser.profilePic = filename;
+      updatedUser.profilePicture = filename; 
       try {
         await axios.post("/upload", data);
-      } catch (err) {}
+      } catch (err) {
+        console.log(err);
+      }
     }
     try {
       const res = await axios.put("/users/" + user._id, updatedUser);
+
+      localStorage.setItem("user", JSON.stringify(res.data)); // immediate localStorage sync
+      dispatch({ type: "UPDATE_SUCCESS", payload: res.data }); // updates global state
+
       setSuccess(true);
-      dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
     } catch (err) {
       dispatch({ type: "UPDATE_FAILURE" });
     }
@@ -67,21 +74,32 @@ export default function Settings() {
           </div>
           <label>Username</label>
           <input
+            id="username"
             type="text"
             placeholder={user.username}
             onChange={(e) => setUsername(e.target.value)}
           />
           <label>Email</label>
           <input
+            id="email"
             type="email"
             placeholder={user.email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <label>Password</label>
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="passwordWrapper">
+            <input
+              id="password"
+              type={showPassword ? "text" : "password"}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter new password"
+              className="passwordInput"
+            />
+            <i
+              className={`togglePasswordIcon ${showPassword ? "fas fa-eye-slash" : "fas fa-eye"}`}
+              onClick={() => setShowPassword((prev) => !prev)}
+            ></i>
+          </div>
           <button className="settingsSubmit" type="submit">
             Update
           </button>

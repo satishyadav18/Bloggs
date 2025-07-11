@@ -9,7 +9,7 @@ export default function Header() {
       </div>
       <img
         className="headerImg"
-        src="https://cdn.stocksnap.io/img-thumbs/280h/spring-flower_6UQXFWM8DQ.jpg"
+        src="https://burst.shopifycdn.com/photos/bright-purple-flower.jpg?width=925&exif=0&iptc=0"
         alt=""
       />
     </div>

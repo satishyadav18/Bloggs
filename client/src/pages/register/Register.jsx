@@ -7,7 +7,8 @@ export default function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); // changed from boolean to string for better messages
+  const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // 👈 for toggle
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +30,6 @@ export default function Register() {
         window.location.replace("/login");
       }
     } catch (err) {
-      // Extract error message from backend
       const msg = err.response?.data?.message || "Something went wrong!";
       setError(msg);
     }
@@ -59,13 +59,20 @@ export default function Register() {
         />
 
         <label>Password</label>
-        <input
-          type="password"
-          className="registerInput"
-          placeholder="Enter your password..."
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <div className="passwordField">
+          <input
+            type={showPassword ? "text" : "password"}
+            className="registerInput"
+            placeholder="Enter your password..."
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <i
+            className={`fas ${showPassword ? "fa-eye-slash" : "fa-eye"}`}
+            onClick={() => setShowPassword((prev) => !prev)}
+            style={{ cursor: "pointer", marginLeft: "-30px", color: "#555" }}
+          ></i>
+        </div>
 
         <button className="registerButton" type="submit">
           Register
@@ -78,10 +85,10 @@ export default function Register() {
         </Link>
       </button>
 
-      {/* Error display */}
       {error && (
         <span style={{ color: "red", marginTop: "10px" }}>{error}</span>
       )}
     </div>
   );
 }
+

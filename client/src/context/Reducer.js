@@ -25,6 +25,7 @@ const Reducer = (state, action) => {
         };
       case "UPDATE_SUCCESS":
         return {
+          ...state,
           user: action.payload,
           isFetching: false,
           error: false,
