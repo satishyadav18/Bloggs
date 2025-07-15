@@ -48,10 +48,10 @@
 
 .sidebarListItem {
   display: inline-block;
-  width: 0%;
+  margin-right: 25px;
   margin-top: 15px;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   

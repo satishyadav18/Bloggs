@@ -13,6 +13,7 @@ export default function SinglePost() {
   const { user } = useContext(Context);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const [categories, setCategories] = useState([]);
   const [updateMode, setUpdateMode] = useState(false);
 
   useEffect(() => {
@@ -21,6 +22,7 @@ export default function SinglePost() {
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
+      setCategories(res.data.categories || []);
     };
     getPost();
   }, [path]);
@@ -31,7 +33,9 @@ export default function SinglePost() {
         data: { username: user.username },
       });
       window.location.replace("/");
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleUpdate = async () => {
@@ -40,9 +44,16 @@ export default function SinglePost() {
         username: user.username,
         title,
         desc,
+        categories,
       });
-      setUpdateMode(false)
-    } catch (err) {}
+      setUpdateMode(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleCategoryChange = (e) => {
+    setCategories(e.target.value.split(",").map((cat) => cat.trim()));
   };
 
   return (
@@ -76,6 +87,7 @@ export default function SinglePost() {
             )}
           </h1>
         )}
+
         <div className="singlePostInfo">
           <span className="singlePostAuthor">
             Author:
@@ -87,6 +99,23 @@ export default function SinglePost() {
             {new Date(post.createdAt).toDateString()}
           </span>
         </div>
+
+        {/* Category field */}
+        {updateMode ? (
+          <input
+            type="text"
+            placeholder="Categories (comma separated)"
+            className="singlePostCatInput"
+            value={categories.join(", ")}
+            onChange={handleCategoryChange}
+          />
+        ) : (
+          <p className="singlePostCategory">
+            Category: {categories.join(", ")}
+          </p>
+        )}
+
+        {/* Description field */}
         {updateMode ? (
           <textarea
             className="singlePostDescInput"
@@ -96,6 +125,7 @@ export default function SinglePost() {
         ) : (
           <p className="singlePostDesc">{desc}</p>
         )}
+
         {updateMode && (
           <button className="singlePostButton" onClick={handleUpdate}>
             Update

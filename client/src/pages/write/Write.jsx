@@ -8,6 +8,12 @@ export default function Write({ darkMode }) {
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
   const { user } = useContext(Context);
+  const [categories, setCategories] = useState([]);
+
+  const handleCategoryChange = (e) => {
+    const value = e.target.value;
+    setCategories(value.split(',').map((cat) => cat.trim()));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,7 +21,9 @@ export default function Write({ darkMode }) {
       username: user.username,
       title,
       desc,
+      categories,
     };
+
     if (file) {
       const data = new FormData();
       const filename = Date.now() + file.name;
@@ -24,12 +32,17 @@ export default function Write({ darkMode }) {
       newPost.photo = filename;
       try {
         await axios.post("/upload", data);
-      } catch (err) {}
+      } catch (err) {
+        console.log("Image upload failed", err);
+      }
     }
+
     try {
       const res = await axios.post("/posts", newPost);
       window.location.replace("/post/" + res.data._id);
-    } catch (err) {}
+    } catch (err) {
+      console.log("Post creation failed", err);
+    }
   };
 
   return (
@@ -50,23 +63,31 @@ export default function Write({ darkMode }) {
           />
           <input
             type="text"
-            id="title"
-            name="title"
             placeholder="Title"
             className={`writeInput ${darkMode ? "dark" : ""}`}
             autoFocus={true}
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
+
+        {/* ✅ Category input field */}
+        <div className="writeFormGroup">
+          <input
+            type="text"
+            placeholder="Categories (comma separated)"
+            className={`writeInput ${darkMode ? "dark" : ""}`}
+            onChange={handleCategoryChange}
+          />
+        </div>
+
         <div className="writeFormGroup">
           <textarea
-            id="description"
-            name="description"
             placeholder="Tell your story..."
             className={`writeInput writeText ${darkMode ? "dark" : ""}`}
             onChange={(e) => setDesc(e.target.value)}
           ></textarea>
         </div>
+
         <button className="writeSubmit" type="submit">
           Publish
         </button>
@@ -74,6 +95,7 @@ export default function Write({ darkMode }) {
     </div>
   );
 }
+
 
 
 

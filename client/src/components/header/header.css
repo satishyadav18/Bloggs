@@ -55,3 +55,20 @@ body, html, #root {
 .header.dark .headerTitles {
   color: #fff;
 }
+
+@media (max-width: 468px) {
+  .headerTitleSm {
+    font-size: 1rem;
+    top: 0%;
+  }
+
+  .headerTitleLg {
+    font-size: 2rem;
+    top: 5%;
+  }
+
+  .headerImg {
+    height: auto;
+    max-height: 300px;
+  }
+}
