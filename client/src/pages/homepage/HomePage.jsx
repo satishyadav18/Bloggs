@@ -30,18 +30,26 @@
 // }
 
 
-
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Posts from "../../components/posts/Posts";
 import Sidebar from "../../components/sidebar/Sidebar";
+import { Context } from "../../context/Context";
 import "./homepage.css";
 import axios from "axios";
 
 export default function Homepage({ darkMode }) {
   const [posts, setPosts] = useState([]);
   const { search } = useLocation();
+  const { user } = useContext(Context);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login"); // Redirect if not logged in
+    }
+  }, [user, navigate]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -52,17 +60,18 @@ export default function Homepage({ darkMode }) {
         console.error("Error fetching posts:", err);
       }
     };
-    fetchPosts();
-  }, [search]);
+    if (user) fetchPosts();
+  }, [search, user]);
 
   return (
     <>
       <Header darkMode={darkMode} />
-      <div className={`home ${darkMode ? "dark" : ""}`}>
-        <Posts posts={posts} />
-        <Sidebar darkMode={darkMode} />
-      </div>
+      {user && (
+        <div className={`home ${darkMode ? "dark" : ""}`}>
+          <Posts posts={posts} />
+          <Sidebar darkMode={darkMode} />
+        </div>
+      )}
     </>
   );
 }
-

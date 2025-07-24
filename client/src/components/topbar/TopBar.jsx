@@ -37,21 +37,21 @@ export default function TopBar() {
       <div className="topLeft">
         {/* Hamburger Icon */}
         <div className="hamburger" onClick={toggleMenu}>
-          <i className="fas fa-bars"></i>
+          <i title="Menu" className="fas fa-bars"></i>
         </div>
 
         {/* Social Icons */}
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-          <i className="topIcon fab fa-facebook-square"></i>
+          <i title="Facebook" className="topIcon fab fa-facebook-square"></i>
         </a>
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-          <i className="topIcon fab fa-instagram-square"></i>
+          <i title="Instagram" className="topIcon fab fa-instagram-square"></i>
         </a>
         <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">
-          <i className="topIcon fab fa-pinterest-square"></i>
+          <i title="Pinterest" className="topIcon fab fa-pinterest-square"></i>
         </a>
         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-          <i className="topIcon fab fa-twitter-square"></i>
+          <i title="Twitter" className="topIcon fab fa-twitter-square"></i>
         </a>
       </div>
 
@@ -81,6 +81,7 @@ export default function TopBar() {
         <Link to="/settings">
           <img
             className="topImg"
+            title="Profile/Settings"
             src={
               user.profilePicture
                 ? PF + user.profilePicture
@@ -95,7 +96,7 @@ export default function TopBar() {
             <li className="topListItem"><Link className="link" to="/register">REGISTER</Link></li>
           </ul>
         )}
-        <i className="topSearchIcon fas fa-search"></i>
+        <i title="Search"className="topSearchIcon fas fa-search"></i>
       </div>
     </div>
   );
