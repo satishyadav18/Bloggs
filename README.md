@@ -1,4 +1,4 @@
-# It is blog app where you can write post and update your blogs category wise and can read the post of other users also after logging the application#
+# It is blog app where you can write post and update your blogs category wise and can read the post of other users also after logging the application. #
 
 
 # To run the project #
